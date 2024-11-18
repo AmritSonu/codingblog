@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog-template-gray.vercel.app/sitemap-index.xml
+Sitemap: https://tutorialspoint.org/sitemap-0.xml

@@ -11,20 +11,28 @@ import ToggleTheme from './ToggleTheme.astro'
 const SOCIALNETWORKS = [
 	{
 		name: 'Github',
-		url: 'https://github.com/danielcgilibert/blog-template',
+		url: 'https://github.com/',
 		icon: GithubIcon
 	},
 
 	{
 		name: 'Twitter',
-		url: 'https://github.com/danielcgilibert/blog-template',
+		url: 'https://github.com/',
 		icon: TwitterIcon
 	}
 ]
 ---
 
 <header class='relative flex items-center h-12 font-semibold'>
-	<a class='text-lg mr-auto' href='/'>Home</a>
+	<a class='text-lg mr-auto flex items-center' href='/'>
+		<picture>
+			<!-- Light Theme Logo -->
+			<source srcset='/logo.png' media='(prefers-color-scheme: light)' />
+			<!-- Dark Theme Logo -->
+			<source srcset='/logo-dark.png' media='(prefers-color-scheme: dark)' />
+			<img src='/logo.png' alt='Logo' class='h-16' />
+		</picture>
+	</a>
 
 	<div
 		id='astro-header-drawer'
