@@ -1,0 +1,197 @@
+---
+heroImage: /src/assets/images/how-to-rerender-component.png
+category: Frontend
+description: 'React 19: How to Rerender a Component'
+pubDate: 2024-11-18T18:30:00.000Z
+tags:
+  - reactjs
+  - web development
+title: 'React 19: How to Rerender a Component'
+---
+
+With the release of **React 19**, managing component rerendering has become more efficient and robust, thanks to updates in **React's architecture** and the **Concurrent Rendering features**. Whether you are upgrading your project or starting fresh, understanding how to rerender components in React 19 is essential for creating high-performance, modern applications.
+
+This guide will walk you through the basics of rerendering, new patterns in React 19, and best practices to make the most of the latest features.
+
+---
+
+## What is Rerendering in React?
+
+In React, rerendering refers to the process of updating a component’s UI to reflect changes in its **state**, **props**, or **context**. React 19 takes this further by integrating **Concurrent Rendering**, allowing your app to remain responsive even during intensive updates.
+
+---
+
+## Key Enhancements in React 19 for Rerendering
+
+### 1. **Automatic Batching**
+
+React 19 improves upon automatic batching of state updates, ensuring multiple state changes within the same event are grouped into a single render.
+
+```javascript
+import { useState } from 'react'
+
+function Counter() {
+	const [count1, setCount1] = useState(0)
+	const [count2, setCount2] = useState(0)
+
+	const handleClick = () => {
+		setCount1((prev) => prev + 1)
+		setCount2((prev) => prev + 1)
+		// Both updates will cause only ONE rerender
+	}
+
+	return <button onClick={handleClick}>Count: {count1 + count2}</button>
+}
+```
+
+### 2. Transition Updates
+
+With React 19, you can designate certain state updates as transitions, which prioritize smoother rendering for user interactions.
+
+```javascript
+import { useState, useTransition } from 'react'
+
+function Search() {
+	const [query, setQuery] = useState('')
+	const [results, setResults] = useState([])
+	const [isPending, startTransition] = useTransition()
+
+	const handleSearch = (e) => {
+		const value = e.target.value
+		setQuery(value)
+
+		startTransition(() => {
+			// Perform expensive filtering or API fetching here
+			const filteredResults = performSearch(value)
+			setResults(filteredResults)
+		})
+	}
+
+	return (
+		<div>
+			<input onChange={handleSearch} value={query} placeholder='Search...' />
+			{isPending ? (
+				<p>Loading...</p>
+			) : (
+				<ul>
+					{results.map((r) => (
+						<li>{r}</li>
+					))}
+				</ul>
+			)}
+		</div>
+	)
+}
+```
+
+## How to Trigger a Rerender in React 19
+
+### 1. Updating State
+
+React's useState remains the primary way to manage component rerendering. State updates trigger rerenders efficiently, leveraging the enhanced React 19 reconciliation algorithm.
+
+```javascript
+const [text, setText] = useState('Hello')
+
+const handleUpdate = () => setText('Hi there!')
+
+return <button onClick={handleUpdate}>{text}</button>
+```
+
+### 2. Updating Props
+
+When a parent component updates the props of a child component, React automatically rerenders the child.
+
+```javascript
+function Parent() {
+	const [color, setColor] = useState('blue')
+
+	return <Child color={color} />
+}
+
+function Child({ color }) {
+	return <div style={{ color }}>My color is {color}</div>
+}
+```
+
+### 3. Using useReducer
+
+The useReducer hook is ideal for managing complex state transitions and rerendering the component upon state changes.
+
+```javascript
+const initialState = { count: 0 }
+
+function reducer(state, action) {
+	switch (action.type) {
+		case 'increment':
+			return { count: state.count + 1 }
+		default:
+			throw new Error()
+	}
+}
+
+function Counter() {
+	const [state, dispatch] = useReducer(reducer, initialState)
+
+	return (
+		<div>
+			<p>Count: {state.count}</p>
+			<button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+		</div>
+	)
+}
+```
+
+### 4. Using a Key to Force Rerender
+
+React unmounts and remounts a component when its key changes, effectively forcing a rerender.
+
+```javascript
+const [key, setKey] = useState(0)
+
+return (
+	<div>
+		<Component key={key} />
+		<button onClick={() => setKey((prev) => prev + 1)}>Force Rerender</button>
+	</div>
+)
+```
+
+## Optimizing Rerendering in React 19
+
+React 19 introduces several optimizations to reduce unnecessary rerenders, making applications faster and more responsive.
+
+### 1. Memoization with React.memo
+
+Prevent unnecessary renders by memoizing functional components.
+
+```javascript
+const Child = React.memo(({ value }) => <p>{value}</p>)
+```
+
+### 2. Using useCallback and useMemo
+
+Memoize functions and expensive calculations to avoid recreating them on every render.
+
+```javascript
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
+const memoizedCallback = useCallback(() => doSomething(a), [a])
+```
+
+### 3. Using the startTransition API
+
+Prioritize user interactions by deferring less critical updates with startTransition.
+
+## Debugging Rerendering in React 19
+
+To analyze unnecessary rerenders, React Developer Tools provide a Profiler. It helps identify which components are rerendering and why, making it easier to optimize performance.
+
+---
+
+## Conclusion
+
+Rerendering in React 19 is more efficient than ever, thanks to features like automatic batching, concurrent rendering, and transitions. By understanding how rerendering works and applying best practices like memoization and proper state management, you can build highly responsive and optimized React applications.
+
+Start experimenting with React 19 today and experience its powerful updates for smoother, faster UI rendering!
+
+---
