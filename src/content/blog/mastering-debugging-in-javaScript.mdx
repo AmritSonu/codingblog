@@ -1,0 +1,149 @@
+---
+heroImage: /src/assets/images/debugging-in-js.webp
+category: Frontend
+description: >-
+  'Tired of JavaScript bugs? Discover simple debugging methods that work. Our guide is packed with tips to help you code more efficiently. Start reading now!'
+pubDate: 2024-11-19T18:30:00.000Z
+tags:
+  - web development
+title: 'Mastering Debugging in JavaScript : A Guide Every Developer Needs'
+---
+
+Debugging is something every developer has to deal with, whether we like it or not. If you’ve ever spent hours staring at your code trying to figure out what went wrong, only to find a missing semicolon or a typo, you’re not alone. I’ve learned that debugging isn’t just about fixing errors—it’s about understanding your code better and making it stronger.
+
+JavaScript, being a dynamic and loosely typed language, can feel like fighting an invisible enemy. Bugs seem to come out of nowhere! But with experience and lots of trial and error, I’ve picked up some effective techniques that save time and reduce frustration. Here’s what has worked for me when debugging JavaScript.
+
+## Why Debugging in JavaScript Is So Important
+
+Debugging isn’t just about fixing things that break; it’s about writing cleaner, more reliable code. JavaScript, with its asynchronous nature and loose typing, often hides problems until they cause crashes. This is why having good debugging skills is essential.
+
+By improving your debugging process, you’ll not only fix issues faster but also prevent future problems. Plus, good debugging makes you a more efficient and confident developer—a quality every team and employer appreciates.
+
+## My Go-To Debugging Techniques
+
+### 1. Read Error Messages (Seriously!)
+
+Early on, I used to panic when I saw errors in the console. Now, I know those error messages are like clues—they tell you what went wrong and where to start looking.
+
+**Example:**
+
+```javascript
+try {
+	JSON.parse('{invalidJson:}')
+} catch (error) {
+	console.error('Oops, something went wrong:', error.message)
+}
+```
+
+## 2. Use Browser Developer Tools
+
+Browsers like Chrome and Firefox have excellent developer tools. With them, you can inspect elements, track network activity, and debug JavaScript directly.
+
+**Pro Tip:** Use the "Sources" tab to set breakpoints, step through your code, and check variable values in real time. It’s like a magnifying glass for your code!
+
+## 3. Leverage the Console
+
+The console object does more than just `console.log()`. Here are some handy methods:
+
+- `console.warn()`: Highlights potential issues.
+- `console.error()`: Logs errors in an obvious way.
+- `console.table()`: Displays arrays or objects in a clean table format.
+
+**Example:**
+
+```javascript
+const user = { name: 'naina', age: 19 }
+console.table(user)
+```
+
+## 4. Set Breakpoints to Pause Code Execution
+
+Breakpoints let you stop your code mid-execution to inspect what’s happening. Use the debugger statement or browser tools.
+**Example:**
+
+```javascript
+function calculate(x, y) {
+	debugger // Execution pauses here
+	return x + y
+}
+calculate(5, 10)
+```
+
+## 5. Debugging Asynchronous Code
+
+Asynchronous operations like Promises and async/await can be challenging to debug. Logging values at different stages can help.
+
+**Example:**
+
+```javascript
+async function fetchData() {
+	try {
+		const response = await fetch('https://api.example.com/data')
+		const data = await response.json()
+		console.log('Data fetched:', data)
+	} catch (error) {
+		console.error('Error fetching data:', error)
+	}
+}
+fetchData()
+```
+
+### 6. Lint Your Code
+
+Using a linter like ESLint helps catch common errors before running your code. It can flag undefined variables, syntax mistakes, and more.
+
+---
+
+### Common JavaScript Errors and How to Fix Them
+
+1. **TypeError**  
+   Occurs when you use a method or property on an incompatible type.
+
+**Example:**
+
+```javascript
+const num = 42
+console.log(num.toUpperCase()) // Error: num.toUpperCase is not a function
+```
+
+**Solution: Check the type before performing operations.**
+**Example:**
+
+```javascript
+if (typeof num === 'string') {
+	console.log(num.toUpperCase())
+}
+```
+
+2. **ReferenceError**
+   Happens when a variable is used before it’s declared.
+   **Example:**
+
+```javascript
+console.log(myVar) // Error: myVar is not defined
+let myVar = 10
+```
+
+**Solution: Declare variables before using them.**
+**Example:**
+
+```javascript
+let myVar = 10
+console.log(myVar)
+```
+
+3. **SyntaxError**
+   Occurs when your code has a typo or missing character.
+   **Example:**
+
+```javascript
+
+let obj = { key: 'value'; // Error: Unexpected token
+```
+
+**Solution: Check for missing or extra punctuation like commas, semicolons, or braces.**
+**Example:**
+
+```javascript
+let obj = { key: 'value' } // Corrected
+```
