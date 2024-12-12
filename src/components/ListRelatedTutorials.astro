@@ -1,0 +1,38 @@
+---
+type Tutorial = {
+	slug: string
+	title: string
+}
+
+type Props = {
+	tutorials: Tutorial[]
+}
+
+const { tutorials } = Astro.props
+---
+
+{
+	tutorials.length > 0 ? (
+		<ul class='related-tutorials-list'>
+			{tutorials.map((tutorial) => (
+				<li key={tutorial.slug} class='mb-4'>
+					<a
+						href={`/tutorials/${tutorial.slug}`}
+						class='text-blue-600 hover:underline dark:text-blue-400'
+					>
+						{tutorial.title}
+					</a>
+				</li>
+			))}
+		</ul>
+	) : (
+		<p class='text-gray-500'>No related tutorials found.</p>
+	)
+}
+
+<style>
+	.related-tutorials-list {
+		list-style: none;
+		padding: 0;
+	}
+</style>

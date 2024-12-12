@@ -11,6 +11,7 @@ import Disqus from '@/components/Disqus'
 import { disqusConfig } from '@/data/disqus.config'
 
 const posts = await getCollection('blog')
+console.log('posts', posts)
 export async function getStaticPaths() {
 	const posts = await getPosts()
 

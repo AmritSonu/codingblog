@@ -1,0 +1,40 @@
+---
+type Props = {
+	id: string
+	data: {
+		title: string
+		description?: string
+		tags?: string[]
+		date?: string
+	}
+	headings?: { text: string; id: string }[]
+	readTime?: number
+}
+
+const { id, data, headings, readTime } = Astro.props
+---
+
+<main id={id} class='tutorial-page'>
+	<!-- Title Section -->
+	<header class='mb-8'>
+		<h1 class='text-3xl font-bold mb-2'>{data.title}</h1>
+		{data.description && <p class='text-lg text-gray-600'>{data.description}</p>}
+		<div class='text-sm text-gray-500 mt-2'>
+			{data.date && <time datetime={data.date}>{data.date}</time>}
+			{readTime && ` · ${readTime} min read`}
+		</div>
+	</header>
+
+	<!-- Content Section -->
+	<section>
+		<slot />
+	</section>
+</main>
+
+<style>
+	.tutorial-page {
+		padding: 1rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+</style>

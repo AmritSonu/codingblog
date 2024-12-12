@@ -1,0 +1,247 @@
+---
+heroImage: /src/assets/images/nextjs-seo.webp
+category: Other
+description: >-
+  Learn comprehensive SEO techniques for Next.js 15, including basic,
+  intermediate, and advanced strategies, schema markup, and optional techniques.
+pubDate: 2024-12-11T18:30:00.000Z
+tags:
+  - nextjs
+  - web development
+title: 'Next.js 15: SEO and Optimization for Superior Performance'
+---
+
+Hello Developers , Welcome to this tutorial where we will discuss the seo in nextjs 15 , nextjs 15 is the latest version is currently released version in oct 2024 .
+
+What you will be learn in this tutorial :
+
+1. Basic SEO
+2. Intermediate SEO
+
+## **1. Basic SEO**
+
+Next.js 15 comes with built-in features that make implementing basic SEO very easy .In this section We will discuss this below things :
+
+* Optimizing title tags and meta descriptions in Nextjs
+* Implement Icons URLs in Nextjs
+* Implementing canonical URLs in Nextjs
+* Creating a sitemap.xml in Nextjs
+* Creating Robots.txt in Nextjs
+
+### Optimizing title tags and meta descriptions in Nextjs
+
+for search engines like google ,yahoo and for webpage it is title and description is important  . in nextjs we need to use it firstly we need to import
+
+```javascript
+import type { Metadata } from 'next';
+```
+
+. then we need to write this basic code for setup title and description here it is .
+
+### Implement Icons URLs in Nextjs
+
+also you can description the other properties as well like - keywords , icons meta data as well .
+
+```javascript
+export const metadata = {
+  keywords: "nextjs seo, nextjs 15 seo , nextjs seo optimization",
+  icons: {
+    icon: "/images/favicon.png",
+    apple: "/images/apple-touch-icon.png",
+  },
+}
+```
+
+* keyword metadata : keywords helps search engine to identify which most words we target for our page and according to it search help will give us best results and it also increase the search ranking .
+* icon metadata : icon metadata helps us or search engine to show small icon on the top left tab on browser it helps website's good visibility on tab and search results ,to look more professional and realistic.
+
+### Implementing canonical URLs in Nextjs
+
+canonical url helps search engine to index exact page and helps to avoid duplicate for better search ranking , for example we have some page **'moneyopedia.com/blog'** and then google will automatically detect this page and will show in search results but what if we have some more pages similar like this **'moneyopedia.com/blog/'** or **'moneyopedia.com/blogs'** then google will also index these pages and the content is same all three urls have , thats what we dont want , so we need to tell google to index this particular given page with given canonical url  . so here is the example code .
+
+```javascript
+export const metadata = {
+  // write metadatabase url is you want to change or set root url ...
+  metadataBase: new URL("https://moneyopedia.com"),
+  alternates: {
+    canonical: "/",
+  },
+};
+```
+
+### Creating a sitemap.xml in Nextjs
+
+Sitemap is the shortcut of file to tell the search engine here is the list of important pages or URLs .you can submit sitemap in any format like sitemap.txt , sitemap.xml and more , but suggested way is sitemap.xml . also you can create sitemap.xml file in public folder and generate sitemap from any sitemap generator tool , but in nextjs we need to create a file named sitemap.js (for typescript .ts) . then we need to write this basic code .
+
+```javascript
+// import files from anywhere , in this case public json files 
+import author from "../public/author.json";
+import pages from "../public/pages.json";
+
+// set the sitemap function 
+export default async function sitemap() {
+  // set base url
+  const BASE_URL = "https://xyz.com";
+ // generate basic url sitemap
+  const links = [
+    {
+      url: `${BASE_URL}/`,
+      lastModified: new Date().toISOString(),
+    },
+  ];
+  // generate pages url 
+  pages.forEach((page) => {
+    links.push({
+      url: `${BASE_URL}/${page.url}`,
+      lastModified: new Date().toISOString(),
+    });
+  });
+  // genrate sitemaps for authors /categories and more  
+  author.forEach((author) => {
+    links.push({
+      url: `${BASE_URL}/author/${(author)}`,
+      lastModified: new Date().toISOString(),
+    });
+  });
+   
+  return links;
+
+};
+```
+
+here is the output after triggering 'example.com/sitemap.xml' :
+
+```xml
+<? xml version = "1.0" encoding = "UTF-8" ?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>https://xyz.com/</loc>
+      <lastmod>2024-12-12T00:00:00.000Z</lastmod>
+    </url>
+     <url>
+      <loc>https://xyz.com/page-1</loc>
+      <lastmod>2024-12-12T00:00:00.000Z</lastmod>
+    </url>
+     <url>
+      <loc>https://xyz.com/page-2</loc>
+      <lastmod>2024-12-12T00:00:00.000Z</lastmod>
+    </url>
+     <url>
+      <loc>https://xyz.com/author/amritpal-singh</loc>
+      <lastmod>2024-12-12T00:00:00.000Z</lastmod>
+    </url>
+  </urlset>
+
+```
+
+### Creating Robots.txt in Nextjs
+
+In Nextjs We need to create robots.txt file in public folder  and write this important code .
+
+```javascript
+User - agent: *
+Disallow: /private/
+Disallow: /api/
+Allow: /public/
+Sitemap: https://yourwebsite.com/sitemap.xml
+```
+
+> keep in mind never disallow your sitemap because google (any search engine) will not able to access your urls for indexing. if your will find any issue then go to search console and will see the issue after live url testing.
+
+now we successfully completed basic SEO for nextjs . we learn creating title , meta descriptions ,icons urls ,canonical URLs ,sitemap.xml , robots.txt .  now we go ahead to learn intermediate seo .
+
+## **2. Intermediate SEO**
+
+Once you've mastered the basics, it's time to level up your SEO game:
+
+* Implementing Open Graph tags for social media sharing in nextjs
+* Optimizing images with alt tags and lazy loading in nextjs
+
+### Implementing Open Graph tags for social media sharing
+
+open graph tags is tags who is hepled to easily recoganized web pages with their title , description and image , and its also look amazing with professional style. so lets start open graph tags for whatsapp , facebook ,twitter , threads and other social media as well .
+
+```javascript
+// nextjs by default fill title and description on open graph if we dont implement
+export const metadata = {
+  title: 'page title',
+  description: 'page description',
+  // open graph image ..
+  openGraph: {
+    images: "/images/ogimage.webp",
+  },
+};
+```
+
+if we dont need same default title and description we also change it by these properites :
+
+***basic code for open graph :***
+
+```javascript
+// nextjs by default fill title and description on open graph if we dont implement
+export const metadata = {
+  title: 'page title',
+  description: 'page description',
+  // open graph image ..
+  openGraph: {
+    title: "Open graph title",
+    description: "Open graph description",
+    url: "/open graph url",
+    siteName: "Site Actual Name ",
+    images: [
+      {
+        url: "/images/ogimage.webp",
+        width: 1200,
+        height: 630,
+        alt: "alt text for opengraph",
+      },
+    ],
+  },
+};
+```
+
+also we write properties for twitter-card :
+
+```javascript
+export const metadata = {
+  title: 'page title',
+  description: 'page description',
+  twitter: {
+    card: "summary_large_image",
+    title: "twitter card title",
+    description:
+      "twitter card description",
+    images: ["/images/ogimage.webp"],
+    creator: "@creator name",
+  },
+};
+```
+
+### Optimizing images with alt tags and lazy loading in nextjs
+
+In nextjs , I Should use Nextjs \<Image/> component . Image component by default handle every important thing for example lazy loading , height , width , fill , quality , priority  and more . but we will discuss only who should good for seo.
+
+```javascript
+<Image
+  src="/profile.webp"
+  width={500}
+  height={500}
+  quality={80}
+  priority
+  loading="lazy"
+  alt="alt text for image"
+/>
+
+```
+
+Here the all important  nextjs image properties work :
+
+1. **`src="/profile.webp"`**: Specifies the source of the image file to display.
+2. **`width={500}`**: Defines the image's width in pixels.
+3. **`height={500}`**: Sets the image's height in pixels.
+4. **`quality={80}`**: Controls the image compression quality (scale from 1 to 100).
+5. **`priority`**: Ensures the image is loaded as soon as possible for better performance on important images.
+6. **`loading="lazy"`**: Defers loading the image until it is near the viewport, improving performance (ignored if `priority` is set).
+7. **`alt="alt text for image"`**: Provides alternative text for the image to improve accessibility and help screen readers.
+
+***
