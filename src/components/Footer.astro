@@ -2,6 +2,14 @@
 const today = new Date()
 ---
 
-<footer class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
-	&copy; {today.getFullYear()} TutorialsPoint.org . All rights reserved.
+<footer class='flex justify-around items-center w-full px-16 h-28 border-t-2'>
+	<nav class='flex space-x-4 text-sm'>
+		<a href='/about-us' class='hover:underline'>About Us</a>
+		<a href='/privacy-policy' class='hover:underline'>Privacy Policy</a>
+		<a href='/disclaimer' class='hover:underline'>Disclaimer</a>
+		<a href='/contact-us' class='hover:underline'>Contact</a>
+	</nav>
+	<p>
+		&copy; {today.getFullYear()} TutorialsPoint.org . All rights reserved.
+	</p>
 </footer>

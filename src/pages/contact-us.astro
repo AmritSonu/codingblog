@@ -1,0 +1,117 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+---
+
+<BaseLayout title='Contact us | TutorialsPoint'>
+	<main class='max-w-5xl mx-auto px-6 py-12'>
+		<div class='max-w-none'>
+			<h1 class='text-4xl font-bold mb-8'>Contact TutorialsPoint</h1>
+			<p class='mb-8'>
+				Have questions about programming or want to contribute? We're here to help you learn and
+				grow as a developer.
+			</p>
+
+			<section class='mb-8'>
+				<h2 class='text-2xl font-semibold mb-4'>What We Offer:</h2>
+
+				<ul class='list-disc pl-6'>
+					<li>Step-by-step coding tutorials for beginners to advanced developers</li>
+					<li>Programming language guides and best practices</li>
+					<li>Web development, mobile app, and software engineering resources</li>
+					<li>Interview preparation and coding challenges</li>
+				</ul>
+			</section>
+
+			<section class='mb-8'>
+				<h2 class='text-2xl font-semibold mb-4'>Get in Touch</h2>
+				<p>Join our community of developers and learners. Reach out through:</p>
+				<ul class='list-disc pl-6'>
+					<li>
+						<strong>Email:</strong>
+						<a href='mailto:astrology@yourdomain.com' class='text-blue-600 hover:underline'
+							>contact@tutorialspoint.org</a
+						>
+					</li>
+					<li>
+						<strong>Facebook:</strong>
+						<a
+							href='https://facebook.com/tutorialspoint'
+							target='_blank'
+							class='text-blue-600 hover:underline'>facebook.com/tutorialspoint.org</a
+						>
+					</li>
+					<li>
+						<strong>Instagram:</strong>
+						<a
+							href='https://instagram.com/tutorialspoint'
+							target='_blank'
+							class='text-blue-600 hover:underline'>instagram.com/tutorialspoint.org</a
+						>
+					</li>
+				</ul>
+				<p>We aim to respond to all inquiries within 24-48 hours.</p>
+			</section>
+
+			<section class='mb-8'>
+				<h2 class='text-2xl font-semibold mb-4'>Send Us a Message</h2>
+				<p class='mb-2'>
+					Have a question about programming or want to suggest a tutorial topic? We'd love to hear
+					from you!
+				</p>
+
+				<form class='p-6 rounded-lg shadow-md border-2 my-4' action='/submit-form' method='POST'>
+					<div class='mb-4'>
+						<label for='name' class='block text-sm font-medium'>Name</label>
+						<input
+							type='text'
+							id='name'
+							name='name'
+							class='border-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+							required
+						/>
+					</div>
+
+					<div class='mb-4'>
+						<label for='email' class='block text-sm font-medium'>Email</label>
+						<input
+							type='email'
+							id='email'
+							name='email'
+							class='border-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+							required
+						/>
+					</div>
+
+					<div class='mb-4'>
+						<label for='subject' class='block text-sm font-medium'>Subject</label>
+						<input
+							type='text'
+							id='subject'
+							name='subject'
+							class='border-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+						/>
+					</div>
+
+					<div class='mb-4'>
+						<label for='message' class='block text-sm font-medium'>Message</label>
+						<textarea
+							id='message'
+							name='message'
+							rows='5'
+							class='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border-2'
+						></textarea>
+					</div>
+
+					<div class='text-right'>
+						<button
+							type='submit'
+							class='px-6 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700'
+						>
+							Send Message
+						</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</main>
+</BaseLayout>

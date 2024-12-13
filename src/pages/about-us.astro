@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+
+const offerings = [
+	'Simple, step-by-step tutorials for everyone, from beginners to experts.',
+	'Practical coding exercises and real-world projects to build your confidence.',
+	'Helpful career advice, resume tips, and job search support to help you succeed.',
+	'Supportive community forums for sharing and learning together.',
+	'Fun, interactive challenges to sharpen your skills.'
+]
+---
+
+<BaseLayout title='About Us - TutorialsPoint'>
+	<main class='max-w-4xl mx-auto px-4 py-12'>
+		<h1 class='text-4xl font-bold mb-8 text-center'>About TutorialsPoint</h1>
+
+		<section>
+			<h2 class='text-3xl font-semibold mb-2'>Our Story</h2>
+			<p class='mb-4'>
+				It all started in 2024 with a single tutorial on Javascript. Encouraged by the positive
+				feedback, we kept adding more tutorials. Today, we offer a wide range of tutorials and
+				articles on topics like programming, web development, AI, and much more.
+			</p>
+		</section>
+
+		<section>
+			<h2 class='text-3xl font-semibold mb-2'>Our Mission</h2>
+			<p class='mb-4'>
+				Tutorials Point was created for people who enjoy learning online at their own pace, right
+				from the comfort of their homes.
+			</p>
+			<p>
+				Our mission is to make learning simple and enjoyable by providing clear and straightforward
+				content on a variety of topics, both technical and non-technical, with no barriers or
+				complications.
+			</p>
+		</section>
+
+		<section>
+			<h2 class='text-3xl font-semibold mb-2'>What We Offer</h2>
+			<ul class='list-disc pl-6 mb-4'>
+				{offerings.map((offering) => <li class='mb-2'>{offering}</li>)}
+			</ul>
+		</section>
+
+		<section>
+			<h2 class='text-3xl font-semibold mb-2'>Join Our Community</h2>
+			<p class='mb-6'>
+				Whether you’re just starting with coding or looking to sharpen your skills, TutorialsPoint
+				is here to support you every step of the way. Join thousands of learners and take your
+				coding journey to the next level. There’s no better time to start—let’s dive in and code
+				together!
+			</p>
+		</section>
+	</main>
+</BaseLayout>
