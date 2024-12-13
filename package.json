@@ -1,23 +1,21 @@
 {
-	"name": "blog-template",
+	"name": "tutorialspoint",
 	"type": "module",
 	"version": "1.1.0",
-	"description": "A template for creating a blog with Astro",
-	"author": "danielcgilibert",
+	"description": "Welcome to TutorialsPoint – The Perfect Point to Master Coding!",
+	"author": "Amritpal Singh",
 	"license": "GPL-3.0-only",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/danielcgilibert/blog-template"
+		"url": "https://github.com/AmritSonu/codingblog"
 	},
 	"keywords": [
-		"astro",
-		"astrojs",
-		"astro-template",
-		"astro-blog",
-		"astro-b"
+		"tutorialspoint",
+		"tutorialspoint.org",
+		"tutorials point"
 	],
 	"bugs": {
-		"url": "https://github.com/danielcgilibert/blog-template/issues"
+		"url": "https://github.com/AmritSonu/codingblog"
 	},
 	"scripts": {
 		"dev": "npx tinacms dev -c \"astro dev\"",
