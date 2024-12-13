@@ -15,7 +15,7 @@ const { tutorials } = Astro.props
 	tutorials.length > 0 ? (
 		<ul class='related-tutorials-list'>
 			{tutorials.map((tutorial) => (
-				<li key={tutorial.slug} class='mb-4'>
+				<li class='mb-4'>
 					<a
 						href={`/tutorials/${tutorial.slug}`}
 						class='text-blue-600 hover:underline dark:text-blue-400'

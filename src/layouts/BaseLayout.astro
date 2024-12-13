@@ -6,6 +6,7 @@ import ProviderTheme from '@/components/ProviderTheme'
 import ProviderAnimations from '@/components/ProviderAnimations'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
 import EditBlog from '@/components/editBlog'
+import Analytics from '@/components/Analytics'
 const { title, description, image, articleDate } = Astro.props
 ---
 
@@ -14,33 +15,7 @@ const { title, description, image, articleDate } = Astro.props
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
-		<!-- microsoft clarity tag  -->
-		<script type='text/javascript'>
-			;(function (c, l, a, r, i, t, y) {
-				c[a] =
-					c[a] ||
-					function () {
-						;(c[a].q = c[a].q || []).push(arguments)
-					}
-				t = l.createElement(r)
-				t.async = 1
-				t.src = 'https://www.clarity.ms/tag/' + i
-				y = l.getElementsByTagName(r)[0]
-				y.parentNode.insertBefore(t, y)
-			})(window, document, 'clarity', 'script', 'p13mfpnsde')
-		</script>
-
-		<!-- Google tag (gtag.js) -->
-		<script async src='https://www.googletagmanager.com/gtag/js?id=G-Z0XRK78950'></script>
-		<script>
-			window.dataLayer = window.dataLayer || []
-			function gtag() {
-				dataLayer.push(arguments)
-			}
-			gtag('js', new Date())
-
-			gtag('config', 'G-Z0XRK78950')
-		</script>
+		<Analytics />
 	</head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white'>
@@ -55,7 +30,7 @@ const { title, description, image, articleDate } = Astro.props
 		<EditBlog />
 		<style>
 			body {
-				margin-left: calc(100vw - 100%); /* prevent layout shift */
+				margin-left: calc(100vw - 100%);
 			}
 		</style>
 	</body>
