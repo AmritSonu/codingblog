@@ -17,7 +17,7 @@ Sometimes, React is not installed correctly, and the app won’t work. To check:
 
 - Open your terminal and type:
 
-```
+```javascript
 npm start
 
 ```
@@ -25,7 +25,7 @@ npm start
 - If it gives an error like “command not found”, React may not be installed.
 - To fix this, create a new React app:
 
-```
+```javascript
 npx create-react-app my-app
 cd my-app
 npm start
@@ -36,7 +36,7 @@ npm start
 
 Your app’s entry point is usually `index.js` or `main.jsx`. Make sure it has this code:
 
-```
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -49,13 +49,12 @@ root.render(
   </React.StrictMode>
 );
 
-
 ```
 
 - **Common Mistake:** The `id="root"` is missing in your HTML file.
   Open `public/index.html` and check if it has:
 
-```
+```javascript
 <div id="root"></div>
 
 ```
@@ -64,7 +63,7 @@ root.render(
 
 Your `App.js` file should return some JSX. For example:
 
-```
+```javascript
 function App() {
   return (
     <div>
@@ -91,7 +90,7 @@ Sometimes, we forget to start the server.
 
 - Open the terminal and type:
 
-```
+```javascript
 npm start
 
 ```
