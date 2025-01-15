@@ -1,0 +1,137 @@
+---
+heroImage: /src/assets/images/javascript.jpg
+category: Frontend
+description: >-
+  learning how to resolve the problem or error of react app is not rendering properly.
+pubDate: 2025-01-11T18:30:00.000Z
+tags:
+  - reactjs
+title: 'Why is My React App Not Rendering?'
+---
+
+Hello! If your React app is not showing anything, don’t worry. It happens to everyone, especially when starting out. I’ll share some common reasons and solutions for this problem in very simple English. Let’s fix it step by step.
+
+## 1. Check if React is Installed Properly
+
+Sometimes, React is not installed correctly, and the app won’t work. To check:
+
+- Open your terminal and type:
+
+```
+npm start
+
+```
+
+- If it gives an error like “command not found”, React may not be installed.
+- To fix this, create a new React app:
+
+```
+npx create-react-app my-app
+cd my-app
+npm start
+
+```
+
+## 2. Check Your `index.js` or `main.jsx` File
+
+Your app’s entry point is usually `index.js` or `main.jsx`. Make sure it has this code:
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css'; // Optional: If you are using CSS.
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+```
+
+- **Common Mistake:** The `id="root"` is missing in your HTML file.
+  Open `public/index.html` and check if it has:
+
+```
+<div id="root"></div>
+
+```
+
+### 3. Is Your App Component Correct?
+
+Your `App.js` file should return some JSX. For example:
+
+```
+function App() {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+- **Common Mistake**: Forgetting to return something. This will break your app.
+
+### 4.Check for Typos in Code
+
+React is very sensitive to typos. For example:
+
+- f you write `return <div>Hello</dib>`, it won’t work because `<dib>` is not valid.
+- Always close your tags like this: `<div></div>`.
+
+### 5.Is Your Server Running?
+
+Sometimes, we forget to start the server.
+
+- Open the terminal and type:
+
+```
+npm start
+
+```
+
+- This will start your app on `http://localhost:3000`.
+
+## 6. Check Browser Console for Errors
+
+The browser console shows errors if something is wrong.
+
+- Open your browser and press **F12** or **Ctrl+Shift+I** to open the console.
+- Look for red error messages. Common errors:
+  - **“Module not found”**: A file is missing or the import path is wrong.
+  - **“Syntax error”**: Check your code for typos.
+
+---
+
+## 7. Common Student Experience
+
+When I was learning React, my app wasn’t rendering because I forgot to export my component. For example:
+
+```javascript
+function App() {
+	return <h1>Hello, React!</h1>
+}
+
+// I forgot this line:
+export default App
+```
+
+Without `export default`, React doesn’t know what to render. Once I added it, my app worked fine.
+
+---
+
+## 8. Extra Tips for Beginners
+
+- **Restart the Server**: If you make changes and it doesn’t show, restart your app with `npm start`.
+- **Use React DevTools**: It helps you see what’s rendering in your app.
+- **Ask for Help**: If you’re stuck, copy the error message and search it on Google or Stack Overflow.
+
+## Conclusion
+
+If your React app is not rendering, don’t panic. It’s usually a small mistake like a typo, missing export, or forgetting to start the server. Follow these steps, and your app will work again.

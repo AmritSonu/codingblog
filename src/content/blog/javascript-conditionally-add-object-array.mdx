@@ -1,0 +1,111 @@
+---
+heroImage: /src/assets/images/javascript.jpg
+category: Frontend
+description: >-
+  learning properly how to conditionally add an object to an array in JavaScript with the help of some real world examples at tutorialspoint hub.
+pubDate: 2025-01-13T18:30:00.000Z
+tags:
+  - js
+title: 'How to Conditionally Add an Object to an Array in JavaScript'
+---
+
+Hi! If you are learning JavaScript do not worry. I will explain this topic in very simple words. We are going to learn how to add an object to an array only if a condition is true. Don’t be scared; it’s very easy! 😊
+
+## What Does "Conditionally Add" Mean?
+
+"Conditionally add" means adding something to an array only when a rule is true. For example:
+
+- Add a student to a list if their age is more than 18.
+- Add an item to your shopping cart if it is available in stock.
+
+This way, we don’t add everything—we add only the things we need.
+
+---
+
+## Example 1: Adding an Object to an Array
+
+Let’s start with a very easy example:
+
+```javascript
+let students = [] // This is an empty array for students
+
+let newStudent = { name: 'Ali', age: 20 } // This is the new student
+
+// Check if the age is more than 18
+if (newStudent.age > 18) {
+	students.push(newStudent) // Add the student to the array
+}
+
+console.log(students) // Output: [{ name: "Ali", age: 20 }]
+```
+
+## What Happened Here?
+
+1. We created an empty array called `students`.
+2. Then we made a new object called `newStudent` with a name and age.
+3. We checked if `newStudent.age > 18`. Since it is true, we added the student to the array using `.push()`.
+
+---
+
+## Example 2: Using a Function
+
+Sometimes, we need to do this for many objects. Instead of writing the same code again and again, we can use a function.
+
+```javascript
+function addStudentIfEligible(array, student) {
+	// Check the condition
+	if (student.age > 18) {
+		array.push(student) // Add student to the array
+	}
+}
+
+let students = [] // Empty array
+
+addStudentIfEligible(students, { name: 'Sara', age: 22 }) // Add Sara
+addStudentIfEligible(students, { name: 'Tom', age: 16 }) // Tom will not be added
+
+console.log(students) // Output: [{ name: "Sara", age: 22 }]
+```
+
+# What is Happening?
+
+The function takes two things: an array and an object (student).  
+It checks if the student’s age is more than 18.  
+If the condition is true, it adds the student to the array.
+
+---
+
+## Real-Life Example: Add a Product to the Cart
+
+Let’s look at an example from a shopping app. We want to add products to the cart, but only if they are in stock.
+
+```javascript
+let cart = [] // Shopping cart is empty at first
+
+function addToCart(product) {
+	if (product.inStock) {
+		// Check if the product is in stock
+		cart.push(product) // Add the product to the cart
+		console.log(`${product.name} added to cart!`)
+	} else {
+		console.log(`${product.name} is out of stock.`)
+	}
+}
+
+addToCart({ name: 'Laptop', price: 50000, inStock: true })
+addToCart({ name: 'Mouse', price: 500, inStock: false })
+
+console.log(cart) // Output: [{ name: "Laptop", price: 50000, inStock: true }]
+```
+
+## Tips for Beginners
+
+- **Practice Conditions**: Learn how to use `if` to check rules before doing something.
+- **Understand Arrays and Objects**: Know how arrays store items and how objects store data.
+- **Keep it Simple**: Start with easy examples like the ones here.
+
+---
+
+## Conclusion
+
+Adding objects to an array in JavaScript is simple if you practice. Remember to check the condition first and then add.Start with small examples, and you will become better every day.
